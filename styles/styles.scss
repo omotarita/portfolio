@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+@font-face {
+    font-family: 'DanfoStd';
+    src: url("fonts/DanfoStd.otf");
+}
+
+:root{
+    --primary: #faf8f8;
+    --on-primary: #000000;
+    --secondary: #191d2b;
+    --on-secondary: #fff;
+     
+}
+
+body{
+    background-color: var(--primary);
+    font-family: 'DM Sans', sans-serif;
+    font-family: 'Domine', serif;
+    font-family: 'Spectral', serif;
+    font-size: 1.1rem;
+    color: var(--on-primary);
+    transition: all .4s ease-in-out;
+}
+
+a:visited { 
+    text-decoration: none; 
+    color: var(--on-primary); 
+   }
