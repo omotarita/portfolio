@@ -1,38 +1,104 @@
-.App {
+@font-face {
+  font-family: "Danfo";
+  src: local("DanfoStd"), url(./fonts/DanfoStd.otf) format("truetype");
+}
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+} */
+
+:root {
+  --primary: #faf8f8;
+  --on-primary: #000000;
+  --secondary: #191d2b;
+  --on-secondary: #fff;
+}
+
+body {
+  background-color: var(--primary);
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  color: var(--on-primary);
+  transition: all 0.4s ease-in-out;
+}
+
+.h1 {
+  background-color: var(--primary);
+  font-family: "DM Sans", sans-serif;
+  font-size: 15rem;
+  color: var(--on-primary);
+  transition: all 0.4s ease-in-out;
+}
+
+.h2 {
+  background-color: var(--primary);
+  font-family: "Domine", serif;
+  font-size: 1rem;
+  color: var(--on-primary);
+  transition: all 0.4s ease-in-out;
+}
+
+.h3 {
+  background-color: var(--primary);
+  font-family: "Spectral", serif;
+  font-size: 1rem;
+  color: var(--on-primary);
+  transition: all 0.4s ease-in-out;
+}
+
+.big-intro-text {
+  background-color: var(--primary);
+  font-size: 3.5rem;
+  margin: 0;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.big-Danfo-text {
+  background-color: var(--primary);
+  font-family: "Danfo";
+  font-size: 20rem;
   text-align: center;
+  color: var(--on-primary);
+  transition: all 0.4s ease-in-out;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.center {
+  margin: auto;
+  width: 80%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-body {
+  padding-top: 13rem;
+  padding-bottom: 13rem;
+  max-width: 1500px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.line-break {
+  padding: 6rem;
 }
 
-.App-link {
-  color: #61dafb;
+.item-spacing {
+  padding-left: 1.9rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-styles {
+  padding: 20px;
+  margin: 20px;
+  font-size: 1.6rem;
+}
+
+a:visited {
+  text-decoration: none;
+  color: var(--on-primary);
 }
