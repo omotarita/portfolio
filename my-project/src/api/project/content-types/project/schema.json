@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Slogan": {
+      "type": "text"
+    },
+    "BGColour": {
+      "type": "string"
+    },
+    "Media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "StartDate": {
+      "type": "datetime"
+    },
+    "EndDate": {
+      "type": "datetime"
+    },
+    "mediums": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::medium.medium",
+      "mappedBy": "projects"
+    },
+    "stacks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::stack.stack",
+      "mappedBy": "projects"
+    },
+    "collaborators": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::collaborator.collaborator",
+      "mappedBy": "projects"
+    },
+    "SelectedWork": {
+      "type": "boolean"
+    },
+    "what_i_ams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::what-i-am.what-i-am",
+      "inversedBy": "projects"
+    }
+  }
+}

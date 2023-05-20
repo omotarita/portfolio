@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./fonts/DanfoStd.otf";
 import "./App.css";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, MenuItem, Select } from "@mui/material";
+import { ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
 
 export function SelectAutoWidth() {
   const [whatIAm, setWhatIAm] = React.useState("generalist");
@@ -28,6 +29,70 @@ export function SelectAutoWidth() {
         </MenuItem>
       </Select>
     </FormControl>
+  );
+}
+
+export const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+
+      try {
+        const response = await fetch(url);
+        const json_file = await response.json();
+
+        setData(Object.values(json_file)[0]);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { loading, error, data };
+};
+
+export function GenerateProjectContent() {
+  const { loading, error, data } = useFetch(
+    "http://localhost:1337/api/projects?populate=*"
+  );
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Oh no! Something's gone wrong 💔</p>;
+  console.log(data);
+
+  return (
+    <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+      {data.map((project) => (
+        <div key={project.id} className="project-card">
+          <div
+            className="project-preview"
+            // style="backgroundColor: {project.bgcolour}"
+          >
+            <div className="project-thumbnail">
+              <img
+                src={
+                  "http://localhost:1337" +
+                  project.attributes.Media.data.attributes.formats.large.url
+                }
+                className="project-photo"
+              />
+              <div className="overlay FadeEffect">
+                <h4 className="project-slogan">{project.attributes.Slogan}</h4>
+              </div>
+            </div>
+          </div>
+          <h3 className="project-title">{project.attributes.Title}</h3>
+        </div>
+      ))}
+    </Grid>
   );
 }
 
@@ -73,7 +138,9 @@ function App() {
           <a href="#selected-work-section">↓ selected work</a>
         </h3>
         <div className="line-break"></div>
-        <div id="selected-work-section">TEST</div>
+        <div id="selected-work-section">
+          <GenerateProjectContent />
+        </div>
       </body>
     </div>
   );
